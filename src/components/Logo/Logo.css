@@ -1,6 +1,6 @@
 .tilt {
-  display: inline-block;
+	display: inline-block;
 	height: 100px;
-  width: 100px;
+	width: 100px;
 	background: linear-gradient(89deg, #ff5edf 0%, #04c8de 100%);
 }

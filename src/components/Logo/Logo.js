@@ -6,9 +6,11 @@ import './Logo.css';
 const Logo = () => {
 	return (
 		<div className='ma4 mt0'>
-			<Tilt tiltMaxAngleX={40} tiltMaxAngleY={40}>
+			<Tilt tiltMaxAngleX={40} tiltMaxAngleY={40} className='tilt'>
 				<div className='br2 shadow-2 tilt'>
-					<div className='pa3'><img style={{paddingTop: '5px'}} src={brain} alt="brain"></img></div>
+					<div className='pa3'>
+						<img style={{paddingTop: '5px'}} src={brain} alt='brain'></img>
+					</div>
 				</div>
 			</Tilt>
 		</div>
