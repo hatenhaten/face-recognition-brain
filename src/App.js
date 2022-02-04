@@ -84,24 +84,34 @@ const particlesOptions = {
 	detectRetina: true,
 };
 
+const particlesInit = main => {
+	console.log(main);
+};
+
+const particlesLoaded = container => {
+	console.log(container);
+};
+
 class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			input: '',
+		};
+	}
+
+	onInputChange = event => {
+		console.log(event.target.value);
+	};
+
 	render() {
-		const particlesInit = main => {
-			console.log(main);
-
-			// you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-		};
-
-		const particlesLoaded = container => {
-			console.log(container);
-		};
 		return (
 			<div className='App'>
 				<Particles className='particles' id='tsparticles' init={particlesInit} loaded={particlesLoaded} options={particlesOptions} />
 				<Navigation />
 				<Logo />
 				<Rank />
-				<ImageLinkForm />
+				<ImageLinkForm onInputChange={this.onInputChange} />
 				{/*
         <FaceRecognition /> */}
 			</div>
