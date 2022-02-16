@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-tsparticles';
 import Clarifai from 'clarifai';
@@ -102,33 +103,50 @@ class App extends Component {
 		super();
 		this.state = {
 			input: '',
+			imageUrl: '',
 		};
 	}
 
 	onInputChange = event => {
-		console.log(event.target.value);
+		this.setState({input: event.target.value});
 	};
 
+	//prettier-ignore
 	onButtonSubmit = () => {
-		console.log('click');
-		app.models.predict('a403429f2ddf4b49b307e318f00e528b', 'https://samples.clarifai.com/face-det.jpg').then(
-			function(response) {
-				console.log(response);
-			},
-			function(err) {},
-		);
+		this.setState({imageUrl: this.state.input});
+		app.models
+      .predict(
+        Clarifai.COLOR_MODEL, 
+        this.state.input)
+      .then(
+        function(response) {
+          console.log(response);
+        },
+        function(err) {},
+      );
 	};
 
+	//prettier-ignore
 	render() {
 		return (
 			<div className='App'>
-				<Particles className='particles' id='tsparticles' init={particlesInit} loaded={particlesLoaded} options={particlesOptions} />
+				<Particles 
+          className='particles' 
+          id='tsparticles' 
+          init={particlesInit} 
+          loaded={particlesLoaded} 
+          options={particlesOptions} 
+        />
 				<Navigation />
 				<Logo />
 				<Rank />
-				<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-				{/*
-        <FaceRecognition /> */}
+				<ImageLinkForm 
+          onInputChange={this.onInputChange} 
+          onButtonSubmit={this.onButtonSubmit} 
+        />
+				<FaceRecognition 
+          imageUrl={this.state.imageUrl} 
+        />
 			</div>
 		);
 	}
