@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import SignIn from './components/SignIn/SignIn';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-tsparticles';
 import Clarifai from 'clarifai';
@@ -154,6 +155,7 @@ class App extends Component {
           options={particlesOptions} 
         />
 				<Navigation />
+        <SignIn />
 				<Logo />
 				<Rank />
 				<ImageLinkForm 
